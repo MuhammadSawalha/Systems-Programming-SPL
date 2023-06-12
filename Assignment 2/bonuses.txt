@@ -1,0 +1,46 @@
+BONUS CHALLENGE FORM
+--------------------
+
+For each bonus challenge you have implemented, please replace the sentence "We are not entitled to this bonus."
+with a short description of:
+
+1. How it was implemented in your code
+2. Where it was used (in which class methods).
+3. How you tested that it is working correctly.
+
+--------------------
+
+1. Fully supporting all configuration fields and avoiding the use of magic numbers
+1.it was implemented at the conthread player[1] stastructures(dealer->like deckSize and player.length or tableSize)
+2.In initializing of the variables like players array and dack size and table size and turnTimeoutMillis for timer and players names
+3.in maven test and also by updating diffrent input each run and it works fine 
+
+--------------------
+
+2. Terminating all threads (that you created) gracefully and in reverse order to the order they were created in.
+1.in the Terminating methods for each player and the teminate for the dealer 
+2.in the dealer Terminate method and in the players Terminate methods we changed 
+the terminate variable to true and then notify for the aithread and for the player it self.
+3.we tested it by printing some lines in wich the players thread finish and also the aithread if needed 
+for example:the log shows that at initializing the players thread we do a for loop from player[0]to the player[n] 
+so ot should be in log file thread player[0] starting ... thread player[1] starting and so on but at the end 
+it shown on the log in reverse like thread player[n] Terminated ... thread player[n-1] terminated and so on
+
+--------------------
+
+3. Handling the config.turnTimeoutMillis value as follows:
+config.turnTimeoutMillis < 0: display nothing.
+config.turnTimeoutMillis = 0: display a timer since the last action (reshuffle or set collected).
+Note: in modes without a countdown timer the dealer must ensure there is always at least one legal set on the table.
+
+We are not entitled to this bonus.
+
+--------------------
+
+4. Making sure that the threads do not wake up unless some actual job needs to be done (e.g., a value needs to be
+changed on the display, key input needs to be handled, etc.) and the only threads created by you are:
+1 thread per player + 1 additional thread for non-human players.
+1.we initialized just the thread for the players and the aithread for each player
+2.in the run method for the dealer (aithread in run method of players) 
+3.the players dont do anything(in wait mode)if there is no keypressed interaction and also the aithread 
+when the queue of action is full he wait to become space in the queue and the dealer thread is updating 
